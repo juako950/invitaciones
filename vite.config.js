@@ -31,15 +31,11 @@ function photosPlugin() {
       })
     },
 
-    // En build: genera un archivo JSON estático con la lista
-    writeBundle() {
+    // Al inicio del build: genera photos.json en public/ para que Vite lo copie a dist/
+    buildStart() {
       const photos = getPhotoList()
-      const outDir = path.resolve(process.cwd(), 'dist', 'api')
-      fs.mkdirSync(outDir, { recursive: true })
-      fs.writeFileSync(
-        path.join(outDir, 'photos.json'),
-        JSON.stringify(photos)
-      )
+      const publicJson = path.resolve(process.cwd(), 'public', 'photos.json')
+      fs.writeFileSync(publicJson, JSON.stringify(photos))
     },
   }
 }

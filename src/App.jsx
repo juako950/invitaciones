@@ -18,7 +18,11 @@ function App() {
   useEffect(() => {
     async function loadFolderPhotos() {
       try {
-        const res = await fetch('/api/photos');
+        // Intentar primero /api/photos (dev server), luego /photos.json (producción)
+        let res = await fetch('/api/photos');
+        if (!res.ok) {
+          res = await fetch('/photos.json');
+        }
         if (!res.ok) return;
         const photoPaths = await res.json();
 
@@ -27,7 +31,7 @@ function App() {
             id: `folder-${index}-${Date.now()}`,
             url: path,
             name: path.split('/').pop(),
-            fromFolder: true, // Marcar que viene de la carpeta (no revocar URL)
+            fromFolder: true,
           }));
           setPhotos(folderPhotos);
         }
