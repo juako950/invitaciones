@@ -41,10 +41,10 @@ function Message() {
           </h2>
 
           <p className="message__text">
-            Cada día agradezco a la vida por tenerte. Tu amor incondicional, 
-            tu paciencia infinita y tu sonrisa que ilumina todo son los regalos 
-            más grandes que he recibido. No hay palabras suficientes para 
-            expresar todo lo que significas para mí.
+          Mamá, hoy queremos darte las gracias por todo lo que haces por nosotros. Por estar en los días buenos y también en los malos, por cuidarnos, escucharnos y darnos amor incluso cuando no lo decimos mucho. Eres esa persona que siempre está ahí, sin importar qué pase.
+Gracias también por aguantar tantas peleas, malos momentos y nuestras mañas, porque aun así nunca dejas de estar para nosotros y de querernos con el mismo amor de siempre.
+Puede que a veces no encontremos las palabras correctas para demostrarte cuánto te queremos, pero de verdad significas muchísimo para nosotros. Gracias por cada consejo, cada abrazo y cada esfuerzo que haces día a día.
+Te amamos demasiado y esperamos que hoy tengas un día tan lindo como tú. Feliz Día de la Madre
           </p>
 
           <p className="message__text">
@@ -53,7 +53,7 @@ function Message() {
           </p>
 
           <p className="message__signature">
-            Con todo mi amor ♥
+            Con todo nuestro amor ♥
           </p>
 
           <div className="message__hearts">

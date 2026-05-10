@@ -7,10 +7,10 @@ function Footer() {
         🌸 💖 🌷 💖 🌸
       </div>
       <p className="footer__text">
-        Hecho con mucho amor para mamá
+        Hecho con mucho amor por tus hijos favoritos y nuestro padre 💖
       </p>
       <p className="footer__year">
-        Feliz Día de las Madres 2026 🌹
+        Feliz Día de las Madres 🌹
       </p>
     </footer>
   );

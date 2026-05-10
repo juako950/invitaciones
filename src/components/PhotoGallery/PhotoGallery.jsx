@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, EffectCoverflow, Autoplay } from 'swiper/modules';
 
@@ -15,7 +16,7 @@ function PhotoGallery({ photos }) {
       <section className="photo-gallery" id="gallery">
         <div className="photo-gallery__header">
           <h2 className="photo-gallery__title">
-            Nuestra <span>Galería</span> 💐
+            Algunas <span>de nuestras fotos</span> 💐
           </h2>
           <p className="photo-gallery__desc">
             Los mejores momentos juntos
@@ -53,23 +54,53 @@ function PhotoGallery({ photos }) {
         centeredSlides={true}
         slidesPerView="auto"
         loop={photos.length > 2}
+        speed={600}
         autoplay={{
           delay: 3500,
           disableOnInteraction: false,
           pauseOnMouseEnter: true,
         }}
         coverflowEffect={{
-          rotate: 8,
+          rotate: 5,
           stretch: 0,
-          depth: 120,
-          modifier: 2.5,
+          depth: 100,
+          modifier: 2,
           slideShadows: false,
         }}
         pagination={{
           clickable: true,
+          dynamicBullets: true,
         }}
         navigation={true}
         spaceBetween={30}
+        watchSlidesProgress={true}
+        preloadImages={false}
+        lazy={{ loadPrevNext: true, loadPrevNextAmount: 2 }}
+        touchRatio={1.2}
+        touchAngle={45}
+        resistance={true}
+        resistanceRatio={0.85}
+        threshold={5}
+        breakpoints={{
+          0: {
+            spaceBetween: 16,
+            coverflowEffect: {
+              rotate: 3,
+              depth: 80,
+              modifier: 1.5,
+              slideShadows: false,
+            },
+          },
+          768: {
+            spaceBetween: 30,
+            coverflowEffect: {
+              rotate: 5,
+              depth: 100,
+              modifier: 2,
+              slideShadows: false,
+            },
+          },
+        }}
       >
         {photos.map((photo, index) => (
           <SwiperSlide key={photo.id}>
@@ -77,6 +108,8 @@ function PhotoGallery({ photos }) {
               src={photo.url}
               alt={photo.name || `Foto ${index + 1}`}
               className="photo-gallery__slide-img"
+              loading="lazy"
+              decoding="async"
             />
             <div className="photo-gallery__slide-overlay">
               <p className="photo-gallery__slide-caption">
