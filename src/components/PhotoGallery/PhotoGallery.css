@@ -1,0 +1,203 @@
+/* ===================================
+   🌸 Photo Gallery (Swiper)
+   =================================== */
+
+.photo-gallery {
+  padding: var(--space-xl) 0 var(--space-3xl);
+  background: var(--gradient-warm);
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-gallery::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, var(--color-bg), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.photo-gallery::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to top, var(--color-bg), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.photo-gallery__header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+  padding: 0 var(--space-xl);
+  position: relative;
+  z-index: 2;
+}
+
+.photo-gallery__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+}
+
+.photo-gallery__title span {
+  font-family: var(--font-script);
+  color: var(--color-primary);
+}
+
+.photo-gallery__desc {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Swiper Custom Styles */
+.photo-gallery .swiper {
+  padding: var(--space-xl) 0 var(--space-3xl);
+  position: relative;
+  z-index: 2;
+}
+
+.photo-gallery .swiper-slide {
+  width: 320px;
+  height: 420px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+  transition: all var(--transition-slow);
+  position: relative;
+  background: var(--color-white);
+}
+
+.photo-gallery .swiper-slide-active {
+  box-shadow: var(--shadow-strong), var(--shadow-glow);
+  transform: scale(1);
+}
+
+.photo-gallery .swiper-slide:not(.swiper-slide-active) {
+  opacity: 0.7;
+  filter: blur(1px);
+}
+
+.photo-gallery__slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.photo-gallery .swiper-slide:hover .photo-gallery__slide-img {
+  transform: scale(1.05);
+}
+
+/* Slide overlay */
+.photo-gallery__slide-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-xl) var(--space-lg) var(--space-lg);
+  background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.photo-gallery .swiper-slide:hover .photo-gallery__slide-overlay {
+  opacity: 1;
+}
+
+.photo-gallery__slide-caption {
+  color: white;
+  font-family: var(--font-script);
+  font-size: 1.2rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Pagination */
+.photo-gallery .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: var(--color-primary-light);
+  opacity: 0.5;
+  transition: all var(--transition-normal);
+}
+
+.photo-gallery .swiper-pagination-bullet-active {
+  background: var(--color-primary);
+  opacity: 1;
+  width: 28px;
+  border-radius: 5px;
+}
+
+/* Navigation arrows */
+.photo-gallery .swiper-button-next,
+.photo-gallery .swiper-button-prev {
+  color: var(--color-primary);
+  width: 48px;
+  height: 48px;
+  background: rgba(255,255,255,0.9);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-soft);
+  transition: all var(--transition-normal);
+}
+
+.photo-gallery .swiper-button-next:hover,
+.photo-gallery .swiper-button-prev:hover {
+  background: var(--color-white);
+  box-shadow: var(--shadow-medium);
+  transform: scale(1.1);
+}
+
+.photo-gallery .swiper-button-next::after,
+.photo-gallery .swiper-button-prev::after {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* Empty state */
+.photo-gallery__empty {
+  text-align: center;
+  padding: var(--space-4xl) var(--space-xl);
+  position: relative;
+  z-index: 2;
+}
+
+.photo-gallery__empty-icon {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: var(--space-lg);
+  animation: float 3s ease-in-out infinite;
+}
+
+.photo-gallery__empty-text {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--color-text-light);
+  margin-bottom: var(--space-sm);
+}
+
+.photo-gallery__empty-hint {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 768px) {
+  .photo-gallery .swiper-slide {
+    width: 260px;
+    height: 350px;
+  }
+
+  .photo-gallery .swiper-button-next,
+  .photo-gallery .swiper-button-prev {
+    display: none;
+  }
+}
