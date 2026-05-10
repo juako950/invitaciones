@@ -18,11 +18,8 @@ function App() {
   useEffect(() => {
     async function loadFolderPhotos() {
       try {
-        // Intentar primero /api/photos (dev server), luego /photos.json (producción)
-        let res = await fetch('/api/photos');
-        if (!res.ok) {
-          res = await fetch('/photos.json');
-        }
+        const baseUrl = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
+        const res = await fetch(import.meta.env.DEV ? `${baseUrl}/api/photos` : `${baseUrl}/api/photos.json`);
         if (!res.ok) return;
         const photoPaths = await res.json();
 
@@ -31,7 +28,7 @@ function App() {
             id: `folder-${index}-${Date.now()}`,
             url: path,
             name: path.split('/').pop(),
-            fromFolder: true,
+            fromFolder: true, // Marcar que viene de la carpeta (no revocar URL)
           }));
           setPhotos(folderPhotos);
         }
